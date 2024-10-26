@@ -5,35 +5,34 @@ import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
 import Notification from './components/Notification/Notification';
 import contactDB from './contactsDB.json';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import appCss from './App.module.css';
+import { useSelector, useDispatch } from 'react-redux';
+// import { addContact, deleteContact } from '../src/redux/contactsSlice';
+import { selectNameFilter } from './redux/filtersSlice';
 import { nanoid } from 'nanoid';
 
 const App = () => {
-  const [contacts, setContacts] = useState(() => {
-    const items = JSON.parse(localStorage.getItem('items'));
-    return items || contactDB;
-  });
-  const [search, setSearch] = useState('');
+  const [contacts, setContacts] = useState(contactDB);
 
-  useEffect(() => {
-    localStorage.setItem('items', JSON.stringify(contacts));
-  }, [contacts]);
-
-  const deleteContact = contactID => {
-    setContacts(prevContact => {
-      return prevContact.filter(contact => contact.id !== contactID);
-    });
-  };
-
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(search.toLowerCase())
-  );
+  // const dispatch = useDispatch();
+  // const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectNameFilter);
 
   const handleSave = newContact => {
     const contactId = { id: nanoid(), ...newContact };
     setContacts(prevContact => {
       return [...prevContact, contactId];
+    });
+  };
+
+  const visibleContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  const deleteContact = contactID => {
+    setContacts(prevContact => {
+      return prevContact.filter(contact => contact.id !== contactID);
     });
   };
 
@@ -46,7 +45,7 @@ const App = () => {
         <ContactForm save={handleSave} />
       </Section>
       <Section className="searchInput">
-        <SearchBox value={search} onSearch={setSearch} />
+        <SearchBox />
       </Section>
       <Section>
         {visibleContacts.length > 0 ? (
