@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectContacts } from '../../redux/contactsSlice';
 import { selectNameFilter } from '../../redux/filtersSlice';
 
-const ContactList = ({ onDelete }) => {
+const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectNameFilter);
 
@@ -16,7 +16,7 @@ const ContactList = ({ onDelete }) => {
     <ul className={listCss.listCards}>
       {visibleContacts.map(contact => (
         <li className={listCss.listItem} key={contact.id}>
-          <Contact contact={contact} onDelete={onDelete} />
+          <Contact contact={contact} />
         </li>
       ))}
     </ul>

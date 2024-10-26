@@ -5,16 +5,11 @@ import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
 import Notification from './components/Notification/Notification';
 import appCss from './App.module.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact, selectContacts } from '../src/redux/contactsSlice';
+import { useSelector } from 'react-redux';
+import { selectContacts } from '../src/redux/contactsSlice';
 
 const App = () => {
-  const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-
-  const handleDelete = contactId => {
-    dispatch(deleteContact(contactId));
-  };
 
   return (
     <Container>
@@ -28,11 +23,7 @@ const App = () => {
         <SearchBox />
       </Section>
       <Section>
-        {contacts.length > 0 ? (
-          <ContactList onDelete={handleDelete} />
-        ) : (
-          <Notification />
-        )}
+        {contacts.length > 0 ? <ContactList /> : <Notification />}
       </Section>
     </Container>
   );
