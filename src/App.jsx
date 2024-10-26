@@ -6,21 +6,11 @@ import ContactList from './components/ContactList/ContactList';
 import Notification from './components/Notification/Notification';
 import appCss from './App.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  addContact,
-  deleteContact,
-  selectContacts,
-} from '../src/redux/contactsSlice';
-import { nanoid } from 'nanoid';
+import { deleteContact, selectContacts } from '../src/redux/contactsSlice';
 
 const App = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
-
-  const handleSave = newContact => {
-    const contactId = { id: nanoid(), ...newContact };
-    dispatch(addContact(contactId));
-  };
 
   const handleDelete = contactId => {
     dispatch(deleteContact(contactId));
@@ -32,7 +22,7 @@ const App = () => {
         <h1 className={appCss.header}>Phonebook</h1>
       </Section>
       <Section className="form">
-        <ContactForm save={handleSave} />
+        <ContactForm />
       </Section>
       <Section className="searchInput">
         <SearchBox />
