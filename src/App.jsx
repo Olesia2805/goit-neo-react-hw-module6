@@ -4,36 +4,26 @@ import ContactForm from './components/ContactForm/ContactForm';
 import SearchBox from './components/SearchBox/SearchBox';
 import ContactList from './components/ContactList/ContactList';
 import Notification from './components/Notification/Notification';
-import contactDB from './contactsDB.json';
-import { useState } from 'react';
 import appCss from './App.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-// import { addContact, deleteContact } from '../src/redux/contactsSlice';
-import { selectNameFilter } from './redux/filtersSlice';
+import {
+  addContact,
+  deleteContact,
+  selectContacts,
+} from '../src/redux/contactsSlice';
 import { nanoid } from 'nanoid';
 
 const App = () => {
-  const [contacts, setContacts] = useState(contactDB);
-
-  // const dispatch = useDispatch();
-  // const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectNameFilter);
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleSave = newContact => {
     const contactId = { id: nanoid(), ...newContact };
-    setContacts(prevContact => {
-      return [...prevContact, contactId];
-    });
+    dispatch(addContact(contactId));
   };
 
-  const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  const deleteContact = contactID => {
-    setContacts(prevContact => {
-      return prevContact.filter(contact => contact.id !== contactID);
-    });
+  const handleDelete = contactId => {
+    dispatch(deleteContact(contactId));
   };
 
   return (
@@ -48,8 +38,8 @@ const App = () => {
         <SearchBox />
       </Section>
       <Section>
-        {visibleContacts.length > 0 ? (
-          <ContactList contactData={visibleContacts} onDelete={deleteContact} />
+        {contacts.length > 0 ? (
+          <ContactList onDelete={handleDelete} />
         ) : (
           <Notification />
         )}
