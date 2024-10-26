@@ -1,0 +1,14 @@
+:root {
+  --background-primary-color: rgb(19, 19, 19);
+  --content-text-color: rgb(244, 244, 244);
+  --title-font-family: 'Matemasie', monospace;
+  --content-font-family: 'Itim', sans-serif;
+  --gradient-color-first: rgb(70, 116, 243);
+  --gradient-color-second: rgb(152, 87, 221);
+  --gradient-color-third: rgb(255, 19, 97);
+  --gradient-color-fourth: rgb(255, 248, 0);
+  --btn-gradient-first: rgb(57, 141, 205);
+  --btn-gradient-second: rgb(0, 95, 172);
+  --btn-gradient-third: rgb(125, 175, 214);
+  --btn-gradient-fourth: rgb(70, 126, 172);
+}

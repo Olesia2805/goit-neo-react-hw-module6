@@ -1,0 +1,30 @@
+@import url(styles/variables.css);
+
+body {
+  font-family: var(--content-font-family);
+  line-height: 1.5;
+  background-color: var(--background-primary-color);
+  color: var(--content-text-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}

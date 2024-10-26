@@ -1,0 +1,30 @@
+.searchBox {
+  padding: 0.5rem;
+  border-radius: 7px;
+  border: none;
+}
+
+.text {
+  position: absolute;
+  left: 0;
+  top: 1.2rem;
+  padding: 0 0.5rem;
+  pointer-events: none;
+  color: var(--btn-gradient-third);
+  transition: all 0.4s ease;
+}
+
+.searchBox:focus {
+  outline: none;
+  box-shadow: 0 0 2px var(--gradient-color-second),
+    0 0 3px var(--gradient-color-second), 0 0 4px var(--gradient-color-second),
+    0 0 5px var(--gradient-color-second), 0 0 6px var(--gradient-color-second),
+    0 0 7px var(--gradient-color-second), 0 0 8px var(--gradient-color-second);
+}
+
+.searchBox:focus ~ .text,
+.searchBox:not(:placeholder-shown).searchBox:not(:focus) ~ .text {
+  top: -0.75rem;
+  left: 0.7rem;
+  color: var(--gradient-color-fourth);
+}

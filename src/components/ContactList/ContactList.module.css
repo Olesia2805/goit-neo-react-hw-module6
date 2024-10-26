@@ -1,0 +1,35 @@
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  border: 1px solid var(--content-text-color);
+  box-shadow: 0 0 0.5px var(--gradient-color-second),
+    0 0 1.5px var(--gradient-color-second),
+    0 0 2.5px var(--gradient-color-second),
+    0 0 3.5px var(--gradient-color-second),
+    0 0 4.5px var(--gradient-color-second),
+    0 0 5.5px var(--gradient-color-second),
+    0 0 6.5px var(--gradient-color-second);
+  padding: 10px;
+  border-radius: 2px 20px 20px 20px;
+}
+
+.listItem:hover {
+  box-shadow: 0 0 2px var(--gradient-color-second),
+    0 0 3px var(--gradient-color-second), 0 0 4px var(--gradient-color-second),
+    0 0 5px var(--gradient-color-second), 0 0 6px var(--gradient-color-second),
+    0 0 7px var(--gradient-color-second), 0 0 8px var(--gradient-color-second);
+}
+
+.listCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px 15px;
+}
+
+@media screen and (max-width: 565px) {
+  .listCards {
+    justify-content: center;
+  }
+}

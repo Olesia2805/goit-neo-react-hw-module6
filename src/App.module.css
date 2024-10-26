@@ -1,0 +1,29 @@
+.header {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    var(--gradient-color-first) 0%,
+    var(--gradient-color-second) 29%,
+    var(--gradient-color-third) 67%,
+    var(--gradient-color-fourth) 100%
+  );
+  background-size: 300% auto;
+  color: #fff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 15s linear infinite;
+  font-size: 32px;
+  font-family: var(--title-font-family);
+}
+
+@keyframes textclip {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

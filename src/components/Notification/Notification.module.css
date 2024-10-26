@@ -1,0 +1,7 @@
+.text {
+  margin-bottom: 15px;
+}
+
+.text:last-of-type {
+  margin-bottom: 0;
+}

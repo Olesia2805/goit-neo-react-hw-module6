@@ -1,0 +1,25 @@
+.btn {
+  background: linear-gradient(
+    90deg,
+    var(--btn-gradient-first),
+    var(--btn-gradient-second)
+  );
+  border: none;
+  cursor: pointer;
+  color: var(--content-text-color);
+  padding: 5px;
+  border-radius: 7px;
+  box-shadow: none;
+  outline: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.btn:hover {
+  background: linear-gradient(
+    100deg,
+    var(--btn-gradient-third),
+    var(--btn-gradient-fourth)
+  );
+}
